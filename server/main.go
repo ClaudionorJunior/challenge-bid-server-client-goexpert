@@ -48,7 +48,7 @@ const REQUEST_MAX_DURATION = 5 * time.Second
 const DB_MAX_TIMEOUT = 10 * time.Millisecond
 
 func main() {
-	http.HandleFunc("/", fetchBid)
+	http.HandleFunc("/cotacao", fetchBid)
 	http.ListenAndServe(":8080", nil)
 
 }
