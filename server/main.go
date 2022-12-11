@@ -10,38 +10,9 @@ import (
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+
+	bidStructs "github.com/ClaudionorJunior/challenge-bid-server-client-goexpert/bid-structs"
 )
-
-type Bid struct {
-	Usdbrl struct {
-		Code       string `json:"code"`
-		Codein     string `json:"codein"`
-		Name       string `json:"name"`
-		High       string `json:"high"`
-		Low        string `json:"low"`
-		VarBid     string `json:"varBid"`
-		PctChange  string `json:"pctChange"`
-		Bid        string `json:"bid"`
-		Ask        string `json:"ask"`
-		Timestamp  string `json:"timestamp"`
-		CreateDate string `json:"create_date"`
-	} `json:"USDBRL"`
-}
-
-type BidModel struct {
-	gorm.Model
-	Code       string
-	Codein     string
-	Name       string
-	High       string
-	Low        string
-	VarBid     string
-	PctChange  string
-	Bid        string
-	Ask        string
-	Timestamp  string
-	CreateDate string
-}
 
 const URL = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
 const REQUEST_MAX_DURATION = 5 * time.Second
@@ -59,7 +30,7 @@ func fetchBid(w http.ResponseWriter, r *http.Request) {
 		panic("failed to connect database")
 	}
 
-	db.AutoMigrate(&BidModel{})
+	db.AutoMigrate(&bidStructs.BidModel{})
 
 	ctx := r.Context()
 	ctx, cancel := context.WithTimeout(ctx, REQUEST_MAX_DURATION)
@@ -81,7 +52,7 @@ func fetchBid(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	var allBid Bid
+	var allBid bidStructs.Bid
 	err = json.Unmarshal(body, &allBid)
 	if err != nil {
 		panic(err)
@@ -90,7 +61,7 @@ func fetchBid(w http.ResponseWriter, r *http.Request) {
 	_, gormCancel := context.WithTimeout(context.Background(), DB_MAX_TIMEOUT)
 	defer gormCancel()
 	fmt.Println("aqui", allBid)
-	db.Debug().Create(&BidModel{
+	db.Debug().Create(&bidStructs.BidModel{
 		Code:       allBid.Usdbrl.Code,
 		Codein:     allBid.Usdbrl.Codein,
 		Name:       allBid.Usdbrl.Name,
