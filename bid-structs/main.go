@@ -1,4 +1,4 @@
-package bidmodel
+package bidstructs
 
 import "gorm.io/gorm"
 

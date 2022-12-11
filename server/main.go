@@ -15,7 +15,7 @@ import (
 )
 
 const URL = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
-const REQUEST_MAX_DURATION = 5 * time.Second
+const REQUEST_MAX_DURATION = 200 * time.Millisecond
 const DB_MAX_TIMEOUT = 10 * time.Millisecond
 
 func main() {
