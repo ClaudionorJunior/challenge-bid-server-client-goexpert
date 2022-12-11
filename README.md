@@ -1,5 +1,6 @@
 # Descrição do projeto
 Esse projeto faz parte do primeiro desafio do curso Go Expert da FullCycle.
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 # Os requisitos para cumprir este desafio são:
 O client.go deverá realizar uma requisição HTTP no server.go solicitando a cotação do dólar.
@@ -13,9 +14,12 @@ O client.go terá que salvar a cotação atual em um arquivo "cotacao.txt" no fo
 O endpoint necessário gerado pelo server.go para este desafio será: `/cotacao` e a porta a ser utilizada pelo servidor HTTP será a 8080.
 
 # Rodando o projeto
-`cd server` e `go run main.go`
-`cd client` e `go run main.go`
+```sh
+cd server && go run main.go
+```
+```sh
+cd client && go run main.go
+```
 
 ## Autor
-
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+[<img src="https://avatars.githubusercontent.com/u/82416762?v=4" width=100><br><sub>LinkedIn</sub>](https://www.linkedin.com/in/claudionorsilva/)<br>[<sub>Github</sub>](https://github.com/ClaudionorJunior)
