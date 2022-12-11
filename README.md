@@ -1,6 +1,6 @@
 # Descrição do projeto
 Esse projeto faz parte do primeiro desafio do curso Go Expert da FullCycle.<br>
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ClaudionorJunior/challenge-bid-server-client-goexpert">
 
 # Os requisitos para cumprir este desafio são:
 O client.go deverá realizar uma requisição HTTP no server.go solicitando a cotação do dólar.
