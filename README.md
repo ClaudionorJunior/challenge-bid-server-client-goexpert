@@ -1,5 +1,5 @@
 # Descrição do projeto
-Esse projeto faz parte do primeiro desafio do curso Go Expert da FullCycle.
+Esse projeto faz parte do primeiro desafio do curso Go Expert da FullCycle.<br>
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 # Os requisitos para cumprir este desafio são:
