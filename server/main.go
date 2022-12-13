@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"time"
@@ -58,10 +57,10 @@ func fetchBid(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	_, gormCancel := context.WithTimeout(context.Background(), DB_MAX_TIMEOUT)
+	gormCtx, gormCancel := context.WithTimeout(context.Background(), DB_MAX_TIMEOUT)
 	defer gormCancel()
-	fmt.Println("aqui", allBid)
-	db.Debug().Create(&bidStructs.BidModel{
+
+	result := db.WithContext(gormCtx).Create(&bidStructs.BidModel{
 		Code:       allBid.Usdbrl.Code,
 		Codein:     allBid.Usdbrl.Codein,
 		Name:       allBid.Usdbrl.Name,
@@ -74,6 +73,10 @@ func fetchBid(w http.ResponseWriter, r *http.Request) {
 		Timestamp:  allBid.Usdbrl.Timestamp,
 		CreateDate: allBid.Usdbrl.CreateDate,
 	})
+
+	if result.Error != nil {
+		panic(result.Error)
+	}
 
 	w.Write(body)
 }
